@@ -66,7 +66,7 @@ app.post("/run-job/:id", (req, res) => {
     db.get("SELECT * FROM jobs WHERE id=?", [id], async (err, job) => {
       db.run("UPDATE jobs SET status='completed' WHERE id=?", [id]);
 
-      // 🔔 Webhook trigger
+      // Webhook trigger
       try {
         await axios.post("https://webhook.site/YOUR-ID-HERE", {
           jobId: job.id,
