@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS jobs (
 )
 `);
 
-// 1️⃣ Create Job
+// Create Job
 app.post("/jobs", (req, res) => {
   const { taskName, payload, priority } = req.body;
 
@@ -36,14 +36,14 @@ app.post("/jobs", (req, res) => {
   );
 });
 
-// 2️⃣ List Jobs
+// List Jobs
 app.get("/jobs", (req, res) => {
   db.all("SELECT * FROM jobs", (err, rows) => {
     res.json(rows);
   });
 });
 
-// 3️⃣ Job Detail
+// Job Detail
 app.get("/jobs/:id", (req, res) => {
   db.get(
     "SELECT * FROM jobs WHERE id = ?",
@@ -54,7 +54,7 @@ app.get("/jobs/:id", (req, res) => {
   );
 });
 
-// 4️⃣ Run Job
+// Run Job
 app.post("/run-job/:id", (req, res) => {
   const id = req.params.id;
 
